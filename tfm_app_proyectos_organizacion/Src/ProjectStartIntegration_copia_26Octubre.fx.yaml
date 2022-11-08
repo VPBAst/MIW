@@ -1,0 +1,861 @@
+ProjectStartIntegration_copia_26Octubre As screen:
+    OnVisible: |
+        =
+
+    Container1_8 As groupContainer.verticalAutoLayoutContainer:
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =97
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =1366
+        ZIndex: =1
+
+    Label1_14 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =59
+        Size: =23
+        Text: =procesoSel.Name
+        Width: =827
+        X: =14
+        Y: =25
+        ZIndex: =2
+
+    Label1_15 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =55
+        Size: =18
+        Text: =Concatenate("[ ",procesoSel.tfm_process_type.phase, "-" , procesoSel.tfm_process_type.area," ]")
+        Width: =394
+        X: =845
+        Y: =25
+        ZIndex: =3
+
+    Label5_6 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =49
+        Text: =Concatenate("Plantillas ", proyectoSeleccionado.urlOrganizationSite)
+        Width: =581
+        X: =26
+        Y: =203
+        ZIndex: =5
+
+    FormStartIntegration_2 As form:
+        DataSource: =tfm_start_integration
+        DefaultMode: =If(IsBlank(First(Filter(tfm_start_integration, tfm_project.tfm_project=proyectoSel.tfm_project))), FormMode.New, FormMode.Edit)
+        Height: =107
+        Item: =First(Filter(tfm_start_integration, tfm_project.tfm_project=proyectoSel.tfm_project))
+        Width: =1352
+        X: =14
+        Y: =96
+        ZIndex: =6
+
+        purposeProject_DataCard1_2 As typedDataCard.textualMultiLineEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr31b_purposeproject"
+            Default: =ThisItem.purposeProject
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@tfm_start_integration],DataSourceInfo.DisplayName,"cr31b_purposeproject")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =204
+            Required: =false
+            Update: =txtPurposeProject_2.Text
+            Width: =450
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey7_2 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            txtPurposeProject_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =38
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =386
+                X: =30
+                Y: =DataCardKey7_2.Y + DataCardKey7_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage9_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =txtPurposeProject_2.Y + txtPurposeProject_2.Height
+                ZIndex: =3
+
+            StarVisible9_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey7_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey7_2.Y
+                ZIndex: =4
+
+        descriptionHighLevelProject_DataCard1_2 As typedDataCard.textualMultiLineEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr31b_descriptionhighlevelproject"
+            Default: =ThisItem.descriptionHighLevelProject
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@tfm_start_integration],DataSourceInfo.DisplayName,"cr31b_descriptionhighlevelproject")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =92
+            Required: =true
+            Update: =DataCardValue7_2.Text
+            Width: =450
+            X: =1
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey2_2 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue7_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =36
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =386
+                X: =30
+                Y: =DataCardKey2_2.Y + DataCardKey2_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage8_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue7_2.Y + DataCardValue7_2.Height
+                ZIndex: =3
+
+            StarVisible8_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey2_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey2_2.Y
+                ZIndex: =4
+
+        datePreparedProjectCharter_DataCard3_2 As typedDataCard.dateTimeEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr31b_datepreparedprojectcharter"
+            Default: =ThisItem.datePreparedProjectCharter
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@tfm_start_integration],DataSourceInfo.DisplayName,"cr31b_datepreparedprojectcharter")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =130
+            Required: =true
+            Update: =DateValue3_2.SelectedDate + Time(Value(HourValue3_2.Selected.Value), Value(MinuteValue3_2.Selected.Value), 0)
+            Width: =450
+            X: =2
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey12_2 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DateValue3_2 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Height: =46
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =272
+                X: =30
+                Y: =DataCardKey12_2.Y + DataCardKey12_2.Height + 5
+                ZIndex: =2
+
+            HourValue3_2 As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Text(Hour(Parent.Default),"00")
+                DisplayMode: =Parent.DisplayMode
+                Height: =DateValue3_2.Height
+                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Tooltip: =Parent.DisplayName
+                Visible: =false
+                Width: =DateValue3_2.Width / 2 - 10
+                X: =DateValue3_2.X + DateValue3_2.Width + 10
+                Y: =DateValue3_2.Y
+                ZIndex: =3
+
+            Separator5_2 As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Bold
+                Height: =HourValue3_2.Height
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: |-
+                    =":"
+                Visible: =false
+                Width: =10
+                Wrap: =false
+                X: =HourValue3_2.X + HourValue3_2.Width
+                Y: =HourValue3_2.Y
+                ZIndex: =4
+
+            MinuteValue3_2 As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Text(Minute(Parent.Default),"00")
+                DisplayMode: =Parent.DisplayMode
+                Height: =HourValue3_2.Height
+                Items: =["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Tooltip: =Parent.DisplayName
+                Visible: =false
+                Width: =HourValue3_2.Width
+                X: =HourValue3_2.X + HourValue3_2.Width + Separator5_2.Width
+                Y: =HourValue3_2.Y
+                ZIndex: =5
+
+            ErrorMessage12_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =HourValue3_2.Y + HourValue3_2.Height
+                ZIndex: =6
+
+            StarVisible12_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey12_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey12_2.Y
+                ZIndex: =7
+
+    Icon1_7 As icon.BackArrow:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back()
+        X: =1284
+        Y: =16
+        ZIndex: =7
+
+    "GaleriaPlantillas_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =59
+        Items: =Filter(tfm_document_template, tfm_process_type.tfm_process_type=procesoSel.tfm_process_type.tfm_process_type)
+        Layout: =Layout.Vertical
+        OnSelect: |
+            =
+            // creamos la coleccion con los nombres de documentos generados relacionados en base a la tabla //
+            //ClearCollect(documentosRelacionados; Filter(tfm_document_relation;output=ThisItem.tfm_template_name));; //usando template_name
+            ClearCollect(documentosRelacionados, Filter(tfm_document_relation,output= GaleriaPlantillas_1.Selected.Name));
+            //ClearCollect(documentosRelacionados;{});;
+        TemplateFill: =If(ThisItem.IsSelected, RGBA(186, 202, 226, 1), RGBA(0, 0, 0, 0))
+        TemplatePadding: =0
+        TemplateSize: =47
+        Width: =581
+        X: =26
+        Y: =252
+        ZIndex: =9
+
+        Image3_2 As image:
+            Height: =36
+            OnSelect: =Select(Parent)
+            Width: =28
+            Y: =6
+            ZIndex: =1
+
+        Title4_2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image3_2.Width - 104
+            X: =28
+            Y: =6
+            ZIndex: =2
+
+        Subtitle4_2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Launch(ThisItem.urlTemplate)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.urlTemplate
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title4_2.Width
+            X: =90
+            Y: =24
+            ZIndex: =3
+
+        NextArrow3_2 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =37
+            Icon: =Icon.ChevronRight
+            OnSelect: |
+                =// Llamada al flujo que genera el documento //
+                Set(flujoResult, tfm_document_01_04_01_project_charter.Run(txtPurposeProject_2.Text, ThisItem.tfm_document_template, procesoSel.tfm_process, proyectoSeleccionado.tfm_project));
+                // Refrescamos el listado de Documentos generados //
+                Refresh([@tfm_document]);
+                
+                Notify(JSON(flujoResult),NotificationType.Information)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Ver los detalles del elemento"
+            Width: =44
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator3_2 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label5_7 As label:
+            OnSelect: =Select(Parent)
+            Size: =10
+            Text: |-
+                ="Plantilla:"
+            X: =28
+            Y: =7
+            ZIndex: =6
+
+    Label9_8 As label:
+        BorderThickness: =1
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(118, 0, 0, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =54
+        Text: =Concatenate("Documentos generados ", proyectoSeleccionado.urlProjectSite)
+        Width: =581
+        X: =14
+        Y: =543
+        ZIndex: =12
+
+    "Gallery5_13 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =129
+        Items: |-
+            =Filter(tfm_document, tfm_process.tfm_process = procesoSel.tfm_process)
+            //tfm_document
+        Layout: =Layout.Vertical
+        OnSelect: |
+            =Set(documentoGeneradoSel, ThisItem);
+            
+            
+            // Creamos coleccion con los nombres de plantillas //
+            ClearCollect(plantillasEntradaDocumento, Filter(tfm_document_template, Name in documentosRelacionados.input).Name);
+            //ClearCollect(documentosRelacionados;{});;
+            
+            // Creamos coleccion con los procesos del proyecto //
+            ClearCollect(procesosProyecto, Filter(tfm_process, tfm_project.tfm_project = proyectoSeleccionado.tfm_project));
+            //ClearCollect(procesosProyecto;{});;
+            
+            //documentos recuperados a traves del proceso //
+            //ClearCollect(documentosProcesosProyecto; Filter(tfm_document; tfm_process.tfm_process in procesosProyecto.Name));;
+            ClearCollect(documentosProcesosProyecto,{});
+            
+            // Cremos coleccion con los documentos del proyecto //
+            //ClearCollect(documentosProyecto; Filter(tfm_document; tfm_process.tfm_project.tfm_project = proyectoSeleccionado.tfm_project));;
+            ClearCollect(documentosProyecto,{});
+        TemplateFill: =If(ThisItem.IsSelected, RGBA(186, 202, 226, 1), RGBA(0, 0, 0, 0))
+        TemplatePadding: =0
+        TemplateSize: =77
+        Width: =581
+        X: =14
+        Y: =597
+        ZIndex: =13
+
+        Image4_13 As image:
+            Height: =39
+            OnSelect: =Select(Parent)
+            Width: =36
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title5_21 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_13.Width - 104
+            X: =70
+            Y: =19
+            ZIndex: =2
+
+        Subtitle5_2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =Concatenate(ThisItem.tfm_document_template.Name)
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title5_21.Width
+            X: =Title5_21.X
+            Y: =Title5_21.Y + Title5_21.Height + 4
+            ZIndex: =3
+
+        NextArrow4_13 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite,ThisItem.pathDocumento))
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Ver los detalles del elemento"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator4_13 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Button3_3 As button:
+            Height: =30
+            OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite,ThisItem.pathDocumento))
+            Text: ="Ver"
+            Width: =72
+            X: =372
+            Y: =23
+            ZIndex: =6
+
+    Label9_10 As label:
+        BorderThickness: =1
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(118, 0, 0, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =54
+        Text: ="Documentos ya generados de Entrada al documento"
+        Width: =691
+        X: =630
+        Y: =543
+        ZIndex: =14
+
+    "Gallery5_14 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =129
+        Items: |
+            =// Tengo que sacar los documentos del proyecto que estén relacionados como entradas //
+            //Filter(tfm_document; tfm_template_name in documentosRelacionados.input) // con columna de texto document_template 
+            Filter(tfm_document, tfm_document_template.Name in documentosRelacionados.input && tfm_project.tfm_project=proyectoSel.tfm_project
+            )
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =67
+        Width: =691
+        X: =630
+        Y: =597
+        ZIndex: =15
+
+        Image4_14 As image:
+            Height: =39
+            OnSelect: =Select(Parent)
+            Width: =36
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title5_22 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_14.Width - 104
+            X: =70
+            Y: =19
+            ZIndex: =2
+
+        NextArrow4_14 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite))
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Ver los detalles del elemento"
+            Width: =47
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator4_14 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Title5_23 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =Concatenate(ThisItem.tfm_document_template.Name)
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_14.Width - 104
+            X: =70
+            Y: =40
+            ZIndex: =6
+
+        Button3_4 As button:
+            Height: =30
+            OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite,ThisItem.pathDocumento))
+            Text: ="Ver"
+            Width: =72
+            X: =549
+            Y: =19
+            ZIndex: =7
+
+    Label9_6 As label:
+        BorderThickness: =1
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(118, 0, 0, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =59
+        Text: ="Documentos entrada de este proceso"
+        Width: =505
+        X: =723
+        Y: =203
+        ZIndex: =16
+
+    "Gallery5_10 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =142
+        Items: =Filter(tfm_document_template, Name in documentosRelacionados.input)
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =67
+        Width: =505
+        X: =723
+        Y: =257
+        ZIndex: =17
+
+        Image4_10 As image:
+            Height: =39
+            OnSelect: =Select(Parent)
+            Width: =36
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title5_16 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_10.Width - 104
+            X: =70
+            Y: =19
+            ZIndex: =2
+
+        NextArrow4_10 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite))
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Ver los detalles del elemento"
+            Width: =47
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator4_10 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Title5_17 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.urlTemplate
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_10.Width - 104
+            X: =70
+            Y: =40
+            ZIndex: =6
+
+    Label16_1 As label:
+        Height: =48
+        Text: ="Todos los documentos y su id de proyecto"
+        Width: =460
+        X: =41
+        Y: =372
+        ZIndex: =18
+
+    "Gallery5_12 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =107
+        Items: =procesosProyecto
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =67
+        Width: =493
+        X: =828
+        Y: =420
+        ZIndex: =19
+
+        Image4_12 As image:
+            Height: =39
+            OnSelect: =Select(Parent)
+            Width: =36
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title5_20 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_12.Width - 104
+            X: =70
+            Y: =19
+            ZIndex: =2
+
+        NextArrow4_12 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite))
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Ver los detalles del elemento"
+            Width: =47
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator4_12 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+    Label17_2 As label:
+        Height: =46
+        Text: =Concatenate(proyectoSel.'Name/title',"- ", Text(proyectoSel.tfm_project))
+        Width: =441
+        X: =26
+        Y: =324
+        ZIndex: =20
+
+    Label17_3 As label:
+        Height: =46
+        Text: ="Procesos del proyecto"
+        Width: =441
+        X: =628
+        Y: =414
+        ZIndex: =21
+
+    "Gallery5_11 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =107
+        Items: =tfm_document
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =67
+        Width: =493
+        X: =26
+        Y: =414
+        ZIndex: =22
+
+        Image4_11 As image:
+            Height: =39
+            OnSelect: =Select(Parent)
+            Width: =36
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title5_18 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_11.Width - 104
+            X: =70
+            Y: =8
+            ZIndex: =2
+
+        NextArrow4_11 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite))
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Ver los detalles del elemento"
+            Width: =47
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator4_11 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Title5_19 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =Text(ThisItem.tfm_project.tfm_project)
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4_11.Width - 104
+            X: =70
+            Y: =37
+            ZIndex: =6
+

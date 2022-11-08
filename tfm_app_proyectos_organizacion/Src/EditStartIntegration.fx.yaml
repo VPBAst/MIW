@@ -1,0 +1,764 @@
+"EditStartIntegration As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+    OnVisible: |-
+        =UpdateContext({managerEnBD: LookUp(tfm_stakeholder, tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Manager)});
+        UpdateContext({clienteEnBD:LookUp(tfm_stakeholder,tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Customer)});
+        //UpdateContext({interesadosEnBD:Filter(tfm_stakeholder;tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Stakeholder)});;
+        UpdateContext({nombresInteresadosEnBD:Filter(tfm_stakeholder,tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Stakeholder).Name});
+        //UpdateContext({usuariosInteresadosEnBD:Filter(tfm_stakeholder;tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Stakeholder).usuario});;
+        
+        /*
+        UpdateContext({
+            interesadosEnBDJSON:Text(JSON(interesadosEnBD;JSONFormat.IgnoreUnsupportedTypes));
+            nombresInteresadosEnBDJSON:Text(JSON(nombresInteresadosEnBD;JSONFormat.IgnoreUnsupportedTypes));
+            usuariosInteresadosEnBDJSON:JSON(usuariosInteresadosEnBD;JSONFormat.IgnoreUnsupportedTypes)
+        });;
+        */
+
+    RectQuickActionBar2 As rectangle:
+        Height: =88
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName2 As label:
+        Align: =Align.Center
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =88
+        Text: =
+        Width: =Parent.Width
+        ZIndex: =2
+
+    Canvas2 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =88
+        ZIndex: =3
+
+        seccionDatos As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =853
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            datePickerFechaActa As datepicker:
+                DefaultDate: =If(IsBlank(integracionStart.datePreparedProjectCharter),Today(), integracionStart.datePreparedProjectCharter)
+                X: =43
+                Y: =298
+                ZIndex: =4
+
+            Label9 As label:
+                Text: ="Fecha de acta"
+                X: =43
+                Y: =258
+                ZIndex: =6
+
+            Label5_13 As label:
+                Fill: =RGBA(186, 202, 226, 1)
+                FontWeight: =FontWeight.Bold
+                Size: =20
+                Text: ="Datos"
+                Width: =1344
+                ZIndex: =10
+
+            aux_datosDocumentoJSON As richTextEditor:
+                Default: =datosDocumentoJSON
+                Height: =270
+                Width: =934
+                X: =43
+                Y: =546
+                ZIndex: =12
+
+            aux_json2 As label:
+                Height: =27
+                Text: |-
+                    ="JSON enviado a la generacion del documento:"
+                Visible: =false
+                Width: =450
+                X: =20
+                Y: =732
+                ZIndex: =13
+
+            txtProposito As text:
+                Default: =If(IsBlank(integracionStart.purposeProject),"", integracionStart.purposeProject)
+                Height: =98
+                HintText: ="Proposito del proyecto"
+                Mode: =TextMode.MultiLine
+                Width: =612
+                X: =442
+                Y: =205
+                ZIndex: =14
+
+            txtProposito_2 As text:
+                Default: =If(IsBlank(integracionStart.purposeProject),"", integracionStart.purposeProject)
+                Height: =98
+                HintText: ="Descripcion de alto nivel"
+                Mode: =TextMode.MultiLine
+                Width: =612
+                X: =442
+                Y: =83
+                ZIndex: =20
+
+            Icon2_1 As icon.Save:
+                Icon: =Icon.Save
+                OnSelect: |-
+                    =
+                    // Guardar datos de tabla start_integration //
+                    Patch(tfm_start_integration, If(IsBlank(integracionStart),Defaults(tfm_start_integration),First( Filter( tfm_start_integration, tfm_start_integration = integracionStart.tfm_start_integration ) )),{
+                        descriptionHighLevelProject:"descripcion de alto nivel del proyecto",
+                        purposeProject:txtProposito.Text,
+                        tfm_project:proyectoSel,
+                        datePreparedProjectCharter:datePickerFechaActa.SelectedDate
+                    });
+                    
+                    // Guardar manager //
+                    UpdateContext({managerEnBD:LookUp(tfm_stakeholder,tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Manager)});
+                    Patch(tfm_stakeholder, If(IsBlank(managerEnBD),Defaults(tfm_stakeholder),managerEnBD),{
+                        role:[@tfm_role].Manager,
+                        tfm_project:proyectoSel,
+                        usuario:ComboManager.Selected,
+                        Name:ComboManager.Selected.'Display Name'
+                    });
+                    
+                    //Guardar cliente //
+                    UpdateContext({clienteEnBD:LookUp(tfm_stakeholder,tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Customer)});
+                    Patch(tfm_stakeholder, If(IsBlank(clienteEnBD),Defaults(tfm_stakeholder),clienteEnBD),{
+                        role:[@tfm_role].Customer,
+                        tfm_project:proyectoSel,
+                        usuario:ComboCliente.Selected,
+                        Name:ComboCliente.Selected.'Display Name'
+                    });
+                    
+                    //
+                    UpdateContext({interesadosEnBD:Filter(tfm_stakeholder,tfm_project.tfm_project=proyectoSel.tfm_project && role=[@tfm_role].Stakeholder)});
+                    
+                    
+                    Remove(tfm_stakeholder, interesadosEnBD);
+                    
+                    UpdateContext({coleccInteresados:[]});
+                    
+                    // OPCION indicando los nombres de las columnas verdaderos //
+                    
+                        ForAll(ComboInteresados.SelectedItems,
+                           Collect(coleccInteresados, {
+                                cr31b_role:[@tfm_role].Stakeholder,
+                                cr31b_tfm_project:proyectoSel,
+                                cr31b_usuario:ThisRecord,
+                                cr31b_name:ThisRecord.'Display Name'
+                           })
+                        );
+                    
+                        ForAll(coleccInteresados,Patch(tfm_stakeholder,Defaults(tfm_stakeholder),ThisRecord));
+                    
+                    
+                    
+                    // OTRA OPCION  ... pero falla porque se monta un lio con los nombres de las columnas y el contexto //
+                    /*
+                    UpdateContext({coleccUsersInteresados:[]});;
+                        ForAll(ComboInteresados.SelectedItems;
+                           Collect(coleccUsersInteresados; {
+                                usuario:ThisRecord
+                           })
+                        );;
+                    UpdateContext({jsonInteresados:JSON(coleccInteresados; JSONFormat.IgnoreUnsupportedTypes)});;
+                        
+                    ForAll(coleccUsersInteresados;Patch(tfm_stakeholder;Defaults(tfm_stakeholder);{
+                                role:[@tfm_role].Stakeholder;
+                                tfm_project:proyectoSel;
+                                usuario:usuario;
+                                Name:usuario.'Display Name'
+                    }));;
+                    */
+                    
+                    // Actualizamos los datos de contexto de integracion //
+                    UpdateContext({integracionStart:LookUp(tfm_start_integration,tfm_project.tfm_project=proyectoSel.tfm_project)});
+                Width: =66
+                X: =1131
+                Y: =431
+                ZIndex: =25
+
+            aux_json As label:
+                BorderThickness: =1
+                Height: =63
+                Text: =json
+                Visible: =false
+                Width: =629
+                X: =534
+                Y: =639
+                ZIndex: =26
+
+            ComboManager As combobox:
+                DefaultSelectedItems: =LookUp('AAD Users', displayname=managerEnBD.usuario.'Display Name')
+                DisplayFields: =["displayname","mail"]
+                InputTextPlaceholder: ="Buscar usuario"
+                Items: =Filter('AAD Users', 'AAD Users (Vistas)'.'All AAD users')
+                SearchFields: =["displayname"]
+                SearchItems: =Search(Filter('AAD Users', 'AAD Users (Vistas)'.'All AAD users'),ComboManager.SearchText,"displayname")
+                SelectMultiple: =false
+                Template: =ListItemTemplate.Double
+                X: =43
+                Y: =98
+                ZIndex: =28
+
+            Label19 As label:
+                Text: ="Jefe de proyecto"
+                X: =43
+                Y: =58
+                ZIndex: =29
+
+            ComboCliente As combobox:
+                DefaultSelectedItems: =LookUp('AAD Users', displayname=clienteEnBD.usuario.'Display Name')
+                DisplayFields: =["displayname","mail"]
+                InputTextPlaceholder: ="Buscar usuario"
+                Items: =Filter('AAD Users', 'AAD Users (Vistas)'.'All AAD users')
+                SearchFields: =["displayname"]
+                SearchItems: =Search(Filter('AAD Users', 'AAD Users (Vistas)'.'All AAD users'),ComboCliente.SearchText,"displayname")
+                SelectMultiple: =false
+                Template: =ListItemTemplate.Double
+                X: =43
+                Y: =194
+                ZIndex: =30
+
+            Label19_1 As label:
+                Text: ="Cliente"
+                X: =43
+                Y: =154
+                ZIndex: =31
+
+            ComboInteresados As combobox:
+                DefaultSelectedItems: =Filter('AAD Users', displayname in nombresInteresadosEnBD)
+                DisplayFields: =["displayname","mail"]
+                InputTextPlaceholder: ="Buscar usuarios"
+                IsSearchable: =false
+                Items: =Filter('AAD Users', 'AAD Users (Vistas)'.'All AAD users')
+                SearchFields: =["displayname"]
+                SearchItems: =[]
+                Template: =ListItemTemplate.Double
+                X: =43
+                Y: =435
+                ZIndex: =32
+
+            Label19_2 As label:
+                Text: ="Interesados"
+                X: =43
+                Y: =395
+                ZIndex: =33
+
+            aux_comboManager_selected As label:
+                BorderThickness: =1
+                Height: =59
+                Text: =ComboManager.Selected.Mail
+                Visible: =false
+                Width: =847
+                X: =425
+                Y: =451
+                ZIndex: =34
+
+            aux_comboManager_selected_ver As button:
+                OnSelect: |-
+                    =UpdateContext({json:JSON(ComboManager.Selected)})
+                Text: ="Ver Variables"
+                Visible: =false
+                X: =425
+                Y: =563
+                ZIndex: =35
+
+        seccionDocumentacion As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =1049
+            Width: =1366
+            X: =0
+            Y: =1
+            ZIndex: =2
+
+            Label5 As label:
+                Fill: =RGBA(186, 202, 226, 1)
+                FontWeight: =FontWeight.Bold
+                Size: =20
+                Text: ="Plantillas"
+                Width: =1343
+                ZIndex: =1
+
+            Label5_9 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                Fill: =RGBA(0, 18, 107, 1)
+                Height: =53
+                Text: =Concatenate("Plantillas de documentos salida del proceso")
+                Width: =1139
+                X: =40
+                Y: =115
+                ZIndex: =3
+
+            "GaleriaPlantillas_2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                BorderThickness: =1
+                Height: =94
+                Items: =Filter(tfm_document_template, tfm_process_type.tfm_process_type=procesoSel.tfm_process_type.tfm_process_type)
+                Layout: =Layout.Vertical
+                OnSelect: |
+                    =
+                    // creamos la coleccion con los nombres de documentos generados relacionados en base a la tabla //
+                    //ClearCollect(documentosRelacionados; Filter(tfm_document_relation;output=ThisItem.tfm_template_name));; //usando template_name
+                    ClearCollect(documentosRelacionados, Filter(tfm_document_relation,output= GaleriaPlantillas_2.Selected.Name));
+                    //ClearCollect(documentosRelacionados;{});;
+                TemplateFill: =If(ThisItem.IsSelected, RGBA(186, 202, 226, 1), RGBA(0, 0, 0, 0))
+                TemplatePadding: =0
+                TemplateSize: =59
+                Width: =1139
+                X: =40
+                Y: =164
+                ZIndex: =4
+
+                Image3_3 As image:
+                    Height: =36
+                    OnSelect: =Select(Parent)
+                    Width: =28
+                    Y: =6
+                    ZIndex: =1
+
+                Title4_3 As label:
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =ThisItem.Name
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - Image3_3.Width - 104
+                    X: =28
+                    Y: =6
+                    ZIndex: =2
+
+                Subtitle4_3 As label:
+                    Height: =Self.Size * 1.8
+                    OnSelect: =
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =ThisItem.pathTemplateDocument
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Title4_3.Width
+                    X: =28
+                    Y: =26
+                    ZIndex: =3
+
+                Separator3_3 As rectangle:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - 1
+                    ZIndex: =5
+
+                Button3_10 As button:
+                    Height: =30
+                    OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlOrganizationSite,ThisItem.pathTemplateDocument))
+                    Text: ="Ver plantilla"
+                    Width: =158
+                    X: =620
+                    Y: =9
+                    ZIndex: =6
+
+                Button3_11 As button:
+                    Height: =30
+                    OnSelect: |
+                        =// Llamada al flujo que genera el documento //
+                        
+                        // LLamada a flujo SIN JSON //
+                        //Set(flujoResult; tfm_document_01_04_01_project_charter.Run(txtProposito.HtmlText; ThisItem.tfm_document_template; procesoSel.tfm_process; proyectoSeleccionado.tfm_project));;
+                        
+                        // Recopilar en un JSON todos los datos 
+                        UpdateContext({datosJson:{
+                            sitioDeProyecto:proyectoSel.urlProjectSite,
+                            sitioDeOrganizacion:proyectoSel.urlOrganizationSite,
+                            bibliotecaPlantilla:"/tfm_plantillas_pmbok",
+                            nombrePlantilla:Last(Split(ThisItem.pathTemplateDocument,"/")).Result,
+                            nombreDocumento:Concatenate(procesoSel.tfm_process_type.phase, "_" , procesoSel.tfm_process_type.area, ThisItem.Name,".docx"),
+                            datosIntegracion:integracionStart,
+                            datosProyecto:proyectoSel,
+                        
+                            // RACI del documento//
+                            responsable: ComboManager.Selected.mail,
+                            consultado: ComboCliente.Selected.mail,
+                            informado: First(ComboInteresados.SelectedItems).mail,
+                            aprobador: ComboCliente.Selected.mail
+                           
+                            
+                        }});
+                        UpdateContext({datosDocumentoJSON:JSON(datosJson,JSONFormat.IgnoreUnsupportedTypes)});
+                        
+                        // Invocar al flujo generate document from JSON //
+                        // Necesitamos pasarle ademas, la referencia a la plantilla, el proceso y el proyecto, para insertar el documento y luego poder sacar los documentos relacionados//
+                        Set(flujoResult, tfm_generate_document_from_json_data.Run(JSON(datosJson,JSONFormat.IgnoreUnsupportedTypes), ThisItem.tfm_document_template, procesoSel.tfm_process, proyectoSel.tfm_project));
+                        
+                        
+                        // Refrescamos el listado de Documentos generados //
+                        Refresh([@tfm_document]);
+                        
+                        // Informamos del resultado //
+                        Notify(JSON(flujoResult),NotificationType.Information)
+                    Text: ="Generar documento"
+                    Width: =284
+                    X: =825
+                    Y: =9
+                    ZIndex: =7
+
+            Label9_11 As label:
+                BorderThickness: =1
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(118, 0, 0, 1)
+                Fill: =RGBA(0, 18, 107, 1)
+                Height: =49
+                Text: ="Plantillas de entrada relacionadas"
+                Width: =1124
+                X: =41
+                Y: =308
+                ZIndex: =5
+
+            "Gallery5_6 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                BorderThickness: =1
+                Height: =106
+                Items: =Filter(tfm_document_template, Name in documentosRelacionados.input)
+                Layout: =Layout.Vertical
+                TemplatePadding: =0
+                TemplateSize: =57
+                Width: =1124
+                X: =40
+                Y: =357
+                ZIndex: =6
+
+                Image4_6 As image:
+                    Height: =39
+                    OnSelect: =Select(Parent)
+                    Width: =36
+                    X: =16
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =1
+
+                Title5_10 As label:
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =ThisItem.Name
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - Image4_6.Width - 104
+                    X: =70
+                    Y: =8
+                    ZIndex: =2
+
+                Separator4_6 As rectangle:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - 1
+                    ZIndex: =5
+
+                Title5_11 As label:
+                    FontWeight: =FontWeight.Lighter
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =ThisItem.pathTemplateDocument
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - Image4_6.Width - 104
+                    X: =70
+                    Y: =26
+                    ZIndex: =6
+
+                Button3_12 As button:
+                    Height: =30
+                    OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlOrganizationSite,ThisItem.pathTemplateDocument))
+                    Text: ="Ver plantilla"
+                    Width: =158
+                    X: =946
+                    Y: =9
+                    ZIndex: =7
+
+            Label5_11 As label:
+                Text: ="* Al pinchar sobre una plantilla carga en la tabla inferior las plantillas de entrada relacionadas"
+                Width: =931
+                X: =80
+                Y: =50
+                ZIndex: =7
+
+            Label5_12 As label:
+                Fill: =RGBA(186, 202, 226, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =41
+                Size: =20
+                Text: =Concatenate("Documentos generados")
+                Width: =1343
+                Y: =502
+                ZIndex: =8
+
+            Label9_12 As label:
+                BorderThickness: =1
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(118, 0, 0, 1)
+                Fill: =RGBA(0, 18, 107, 1)
+                Height: =53
+                Text: ="Documentos salida del proceso"
+                Width: =1139
+                X: =40
+                Y: =659
+                ZIndex: =9
+
+            "Gallery5_8 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                BorderThickness: =1
+                Height: =127
+                Items: |-
+                    =Filter(tfm_document, tfm_process.tfm_process = procesoSel.tfm_process)
+                    //tfm_document
+                Layout: =Layout.Vertical
+                OnSelect: |
+                    =Set(documentoGeneradoSel, ThisItem);
+                    
+                    
+                    // Creamos coleccion con los nombres de plantillas //
+                    ClearCollect(plantillasEntradaDocumento, Filter(tfm_document_template, Name in documentosRelacionados.input).Name);
+                    //ClearCollect(documentosRelacionados;{});;
+                    
+                    // Creamos coleccion con los procesos del proyecto //
+                    ClearCollect(procesosProyecto, Filter(tfm_process, tfm_project.tfm_project = proyectoSeleccionado.tfm_project));
+                    //ClearCollect(procesosProyecto;{});;
+                    
+                    //documentos recuperados a traves del proceso //
+                    //ClearCollect(documentosProcesosProyecto; Filter(tfm_document; tfm_process.tfm_process in procesosProyecto.Name));;
+                    ClearCollect(documentosProcesosProyecto,{});
+                    
+                    // Cremos coleccion con los documentos del proyecto //
+                    //ClearCollect(documentosProyecto; Filter(tfm_document; tfm_process.tfm_project.tfm_project = proyectoSeleccionado.tfm_project));;
+                    ClearCollect(documentosProyecto,{});
+                TemplateFill: =If(ThisItem.IsSelected, RGBA(186, 202, 226, 1), RGBA(0, 0, 0, 0))
+                TemplatePadding: =0
+                TemplateSize: =77
+                Width: =1139
+                X: =40
+                Y: =713
+                ZIndex: =10
+
+                Image4_8 As image:
+                    Height: =39
+                    OnSelect: =Select(Parent)
+                    Width: =36
+                    X: =16
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =1
+
+                Title5_13 As label:
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =Concatenate(ThisItem.tfm_document_template.Name, " - ", ThisItem.Name)
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - Image4_8.Width - 104
+                    X: =70
+                    Y: =19
+                    ZIndex: =2
+
+                Subtitle5_3 As label:
+                    Height: =17
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =ThisItem.pathDocumento
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =973
+                    X: =Title5_13.X
+                    Y: =Title5_13.Y + Title5_13.Height + 4
+                    ZIndex: =3
+
+                Separator4_8 As rectangle:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - 1
+                    ZIndex: =5
+
+                Button3_8 As button:
+                    Height: =38
+                    OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite,ThisItem.pathDocumento))
+                    Text: ="Ver documento"
+                    Width: =179
+                    X: =583
+                    Y: =19
+                    ZIndex: =6
+
+                Button3_13 As button:
+                    Height: =39
+                    OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite,ThisItem.pathDocumento))
+                    Text: ="Iniciar Flujo de Aprobación"
+                    Width: =280
+                    X: =774
+                    Y: =19
+                    ZIndex: =7
+
+            Label9_13 As label:
+                BorderThickness: =1
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(118, 0, 0, 1)
+                Fill: =RGBA(0, 18, 107, 1)
+                Height: =54
+                Text: ="Documentos de entrada"
+                Width: =1137
+                X: =42
+                Y: =872
+                ZIndex: =11
+
+            "Gallery5_15 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                BorderThickness: =1
+                Height: =129
+                Items: |
+                    =// Tengo que sacar los documentos del proyecto que estén relacionados como entradas //
+                    //Filter(tfm_document; tfm_template_name in documentosRelacionados.input) // con columna de texto document_template 
+                    Filter(tfm_document, tfm_document_template.Name in documentosRelacionados.input && tfm_project.tfm_project=proyectoSel.tfm_project
+                    )
+                Layout: =Layout.Vertical
+                TemplatePadding: =0
+                TemplateSize: =67
+                Width: =1139
+                X: =40
+                Y: =920
+                ZIndex: =12
+
+                Image4_15 As image:
+                    Height: =39
+                    OnSelect: =Select(Parent)
+                    Width: =36
+                    X: =16
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =1
+
+                Title5_24 As label:
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =Concatenate(ThisItem.tfm_document_template.Name, " - ", ThisItem.Name)
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - Image4_15.Width - 104
+                    X: =70
+                    Y: =19
+                    ZIndex: =2
+
+                Separator4_15 As rectangle:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - 1
+                    ZIndex: =5
+
+                Title5_25 As label:
+                    FontWeight: =FontWeight.Normal
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =10
+                    Text: =ThisItem.pathDocumento
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - Image4_15.Width - 104
+                    X: =70
+                    Y: =40
+                    ZIndex: =6
+
+                Button3_9 As button:
+                    Height: =35
+                    OnSelect: =Launch(Concatenate(proyectoSeleccionado.urlProjectSite,ThisItem.pathDocumento))
+                    Text: ="Ver documento"
+                    Width: =191
+                    X: =694
+                    Y: =19
+                    ZIndex: =7
+
+            Label5_14 As label:
+                Height: =85
+                Text: ="* Al pinchar sobre un documento se carga en la tabla inferior los documentos de entrada generados previamente"
+                Width: =1112
+                X: =41
+                Y: =551
+                ZIndex: =13
+
+            Label16 As label:
+                Text: =proyectoSeleccionado.urlProjectSite
+                Width: =533
+                X: =373
+                Y: =503
+                ZIndex: =14
+
+            Label17 As label:
+                Text: =proyectoSeleccionado.urlOrganizationSite
+                Width: =745
+                X: =146
+                ZIndex: =15
+
+    Label1_16 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =59
+        Size: =20
+        Text: =procesoSel.Name
+        Width: =827
+        X: =22
+        Y: =14
+        ZIndex: =4
+
+    Icon1_8 As icon.BackArrow:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back()
+        X: =1284
+        Y: =16
+        ZIndex: =5
+
+    Label1_17 As label:
+        Color: =RGBA(251, 188, 159, 1)
+        Height: =32
+        Size: =15
+        Text: =Concatenate("[ ",procesoSel.tfm_process_type.phase, "-" , procesoSel.tfm_process_type.area," ]")
+        Width: =394
+        X: =890
+        Y: =48
+        ZIndex: =6
+
+    Label1_20 As label:
+        Color: =RGBA(255, 255, 0, 1)
+        Height: =32
+        Size: =15
+        Text: |-
+            =Concatenate("[ Proyecto: ",proyectoSel.'Name/title', " ]")
+        Width: =394
+        X: =890
+        Y: =14
+        ZIndex: =9
+

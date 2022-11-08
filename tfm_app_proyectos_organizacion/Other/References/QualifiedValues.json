@@ -1,0 +1,99 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_cr31b_tfm_project_forms",
+      "Namespace": "tfm_project (Formularios)",
+      "Values": {
+        "Información": "ca79f14f-53f3-4ae5-88ea-fba549dc9685"
+      }
+    },
+    {
+      "Kind": "default.cds_sharepointsite_forms",
+      "Namespace": "Sitios de SharePoint (Formularios)",
+      "Values": {
+        "Información": "ba6522af-e71b-df11-aa01-00155d2a9006"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_project_state_forms",
+      "Namespace": "tfm_project_state (Formularios)",
+      "Values": {
+        "Información": "64059d51-b2c4-4cb1-b185-ec2292d6b7fc"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_process_forms",
+      "Namespace": "tfm_process (Formularios)",
+      "Values": {
+        "Información": "2b360868-1bc9-46ae-9cda-52fd2c0c89cc"
+      }
+    },
+    {
+      "Kind": "default.cds_aaduser_forms",
+      "Namespace": "AAD Users (Formularios)",
+      "Values": {
+        "Information": "dd5ded01-9aad-4e25-8d0e-e9acdaecbe4e"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_process_type_forms",
+      "Namespace": "tfm_process_type (Formularios)",
+      "Values": {
+        "Información": "ec113b11-0e05-4809-8ad7-f80e0c40dc47"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_start_integration_forms",
+      "Namespace": "tfm_start_integration (Formularios)",
+      "Values": {
+        "Información": "251314cc-d64e-420e-b058-db2a3f2795bf"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_document_template_forms",
+      "Namespace": "tfm_document_template (Formularios)",
+      "Values": {
+        "Información": "ab4f20ab-1317-4f27-8afd-f7a5aca699b8"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_document_forms",
+      "Namespace": "tfm_document (Formularios)",
+      "Values": {
+        "Información": "47f31975-27f3-4623-ba0c-f1c9d9946178"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_document_relation_forms",
+      "Namespace": "tfm_document_relation (Formularios)",
+      "Values": {
+        "Información": "4c3db0e3-1e5c-4865-a085-aeef621b24e9"
+      }
+    },
+    {
+      "Kind": "default.cds_applicationuser_forms",
+      "Namespace": "ApplicationUsers (Formularios)",
+      "Values": {
+        "Información": "d0ca5ad3-6655-4491-95a8-b131cbf9a8cb"
+      }
+    },
+    {
+      "Kind": "default.cds_cr31b_tfm_stakeholder_forms",
+      "Namespace": "tfm_stakeholder (Formularios)",
+      "Values": {
+        "Información": "8b4a8999-a7f7-4cef-a9c4-e7cbfe418944"
+      }
+    },
+    {
+      "Kind": "default.cds_systemuser_forms",
+      "Namespace": "Usuarios (Formularios)",
+      "Values": {
+        "Formulario de usuario – Business": "c2413504-7eb2-4c59-a087-95d819866114",
+        "Formulario de ventana de jerarquía de usuario": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452",
+        "Información": "094fb08a-77bb-49e0-b7ea-8dbddfd01294",
+        "Usuario": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
+        "Usuario de la aplicación": "d26924ef-4d80-46f7-ab1d-e6ae80a54ce8"
+      }
+    }
+  ]
+}

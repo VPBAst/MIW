@@ -1,0 +1,146 @@
+[
+  {
+    "DisplayName": "tfm_process_type (Vistas)",
+    "Name": "_cr31b_tfm_process_type_views",
+    "RelatedEntityName": "tfm_process_type",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "48f3822e-b956-44ed-95b5-6f8bd1c54f71": "Vista de búsqueda de tfm_process_type",
+      "87c68f3f-fee7-44cf-89c6-e2d055116f32": "tfm_process_type activo",
+      "e10d9259-0a47-43ed-aa05-44d659a01749": "Vista de búsqueda avanzada de tfm_process_type",
+      "e5fd5e1f-c3da-4bf2-810d-6b09d86354b3": "Vista asociada de tfm_process_type"
+    }
+  },
+  {
+    "DisplayName": "tfm_area",
+    "Name": "cr31b_area",
+    "OptionSetInfoNameMapping": {
+      "13": "13.Stakeholders",
+      "4": "04.Integration",
+      "5": "05.Scope"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr31b_area",
+        "OptionSetReferenceEntityName": "tfm_process_type"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr31b_area",
+    "RelatedEntityName": "tfm_process_type",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "tfm_methodology",
+    "Name": "cr31b_tfm_methodology",
+    "OptionSetInfoNameMapping": {
+      "1": "PMBOK",
+      "2": "PRINCE2"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr31b_methodology",
+        "OptionSetReferenceEntityName": "tfm_process_type"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cr31b_methodology",
+        "OptionSetReferenceEntityName": "tfm_document_relation"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr31b_methodology",
+    "RelatedEntityName": "tfm_process_type",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Estado (tfm_process_type)",
+    "Name": "cr31b_tfm_process_type_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_process_type"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_process_type",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_process_type)",
+    "Name": "cr31b_tfm_process_type_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_process_type"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_process_type",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_process_types",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_process_type",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_process_type",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_area": "area",
+      "cr31b_methodology": "methodology",
+      "cr31b_name": "Name",
+      "cr31b_phase": "phase",
+      "cr31b_tfm_document_template_cr31b_tfm_pro": "tfm_document_template",
+      "cr31b_tfm_process_cr31b_tfm_process_type_": "tfm_process",
+      "cr31b_tfm_process_type_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_process_type_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_process_type_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_process_type_DuplicateBaseRecord)",
+      "cr31b_tfm_process_type_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_process_type_DuplicateMatchingRecord)",
+      "cr31b_tfm_process_type_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_process_type_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_process_type_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_process_type_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_process_typeid": "tfm_process_type",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_process_type",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

@@ -1,0 +1,150 @@
+[
+  {
+    "DisplayName": "tfm_project_state (Vistas)",
+    "Name": "_cr31b_tfm_project_state_views",
+    "RelatedEntityName": "tfm_project_state",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "332ef5d1-75a0-4129-9368-f137bc20cda0": "Vista de búsqueda avanzada de tfm_project_state",
+      "38252a1e-0783-4c46-93b3-1aabc3b2577f": "tfm_project_state inactivo",
+      "9466b0ea-a063-4060-8267-de4e359820c3": "Vista de búsqueda de tfm_project_state",
+      "aeb783ed-4957-441c-9bf2-7ba38526d706": "Vista asociada de tfm_project_state",
+      "dfc9d2df-c5f7-4e10-b539-f420de95113f": "tfm_project_state activo"
+    }
+  },
+  {
+    "DisplayName": "tfm_phase",
+    "Name": "cr31b_tfm_phase",
+    "OptionSetInfoNameMapping": {
+      "1": "1.Start",
+      "2": "2.Planning",
+      "3": "3.Monitoring & Control",
+      "4": "4.Execution",
+      "5": "5.Close"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr31b_phase",
+        "OptionSetReferenceEntityName": "tfm_project_state"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "cr31b_phase",
+        "OptionSetReferenceEntityName": "tfm_process_type"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr31b_phase",
+    "RelatedEntityName": "tfm_project_state",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "tfm_phase_state",
+    "Name": "cr31b_tfm_phase_state",
+    "OptionSetInfoNameMapping": {
+      "0": "Pending",
+      "1": "Open",
+      "2": "Work in Progress",
+      "3": "Closed Complete",
+      "4": "Closed Incomplete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr31b_state",
+        "OptionSetReferenceEntityName": "tfm_project_state"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr31b_state",
+    "RelatedEntityName": "tfm_project_state",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Estado (tfm_project_state)",
+    "Name": "cr31b_tfm_project_state_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_project_state"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_project_state",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_project_state)",
+    "Name": "cr31b_tfm_project_state_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_project_state"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_project_state",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_project_states",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_project_state",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_project_state",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_name": "Name",
+      "cr31b_phase": "phase",
+      "cr31b_state": "state",
+      "cr31b_tfm_project": "tfm_project",
+      "cr31b_tfm_project_state_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_project_state_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_project_state_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_project_state_DuplicateBaseRecord)",
+      "cr31b_tfm_project_state_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_project_state_DuplicateMatchingRecord)",
+      "cr31b_tfm_project_state_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_project_state_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_project_state_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_project_state_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_project_stateid": "tfm_project_state",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_project_state",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

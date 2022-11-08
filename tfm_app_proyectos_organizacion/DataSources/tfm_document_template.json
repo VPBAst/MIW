@@ -1,0 +1,101 @@
+[
+  {
+    "DisplayName": "tfm_document_template (Vistas)",
+    "Name": "_cr31b_tfm_document_template_views",
+    "RelatedEntityName": "tfm_document_template",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0e079cdc-48c5-4ff2-8ac6-0194a19bfd99": "tfm_document_template activo",
+      "96a63676-2dfa-4c6d-bcb2-441fd1961f29": "Vista asociada de tfm_document_template",
+      "b0b49194-1d0f-4e8c-80b8-9ddec49efba3": "Vista de búsqueda de tfm_document_template",
+      "b7ac47de-3cbe-4316-8746-83068a9a62a6": "Vista de búsqueda avanzada de tfm_document_template"
+    }
+  },
+  {
+    "DisplayName": "Estado (tfm_document_template)",
+    "Name": "cr31b_tfm_document_template_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_document_template"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_document_template",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_document_template)",
+    "Name": "cr31b_tfm_document_template_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_document_template"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_document_template",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_document_templates",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_document_template",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_document_template",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_name": "Name",
+      "cr31b_pathtemplatedocument": "pathTemplateDocument",
+      "cr31b_tfm_document_cr31b_tfm_document_tem": "tfm_document",
+      "cr31b_tfm_document_template_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_document_template_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_document_template_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_document_template_DuplicateBaseRecord)",
+      "cr31b_tfm_document_template_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_document_template_DuplicateMatchingRecord)",
+      "cr31b_tfm_document_template_FileAttachments": "FileAttachments",
+      "cr31b_tfm_document_template_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_document_template_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_document_template_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_document_template_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_document_templateid": "tfm_document_template",
+      "cr31b_tfm_process_type": "tfm_process_type",
+      "cr31b_urltemplate": "urlTemplate",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_document_template",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "b09ff754-4a17-4677-b65e-af65ef9d9e65",
+    "Name": "tfm_project_state-crearregistroinicialalcrearproyecto",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": null
+  }
+]

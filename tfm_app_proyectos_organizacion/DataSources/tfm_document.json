@@ -1,0 +1,101 @@
+[
+  {
+    "DisplayName": "tfm_document (Vistas)",
+    "Name": "_cr31b_tfm_document_views",
+    "RelatedEntityName": "tfm_document",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "410d3559-92c7-4abe-9419-932888eed72e": "Vista de búsqueda de tfm_document",
+      "546486db-0450-4059-8b41-77574c8c6ed3": "Vista asociada de tfm_document",
+      "6cdd4a78-ad0d-420a-b849-2c0117f961e1": "tfm_document activo",
+      "b902e12e-be42-4b31-a510-f9b719e78d6a": "tfm_document inactivo",
+      "f9db979c-b647-465e-bc8d-2328244ec67a": "Vista de búsqueda avanzada de tfm_document"
+    }
+  },
+  {
+    "DisplayName": "Estado (tfm_document)",
+    "Name": "cr31b_tfm_document_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_document"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_document",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_document)",
+    "Name": "cr31b_tfm_document_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_document"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_document",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_documents",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_document",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_document",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_name": "Name",
+      "cr31b_pathdocumento": "pathDocumento",
+      "cr31b_tfm_document_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_document_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_document_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_document_DuplicateBaseRecord)",
+      "cr31b_tfm_document_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_document_DuplicateMatchingRecord)",
+      "cr31b_tfm_document_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_document_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_document_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_document_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_document_template": "tfm_document_template",
+      "cr31b_tfm_documentid": "tfm_document",
+      "cr31b_tfm_process": "tfm_process",
+      "cr31b_tfm_project": "tfm_project",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_document",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

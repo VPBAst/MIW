@@ -1,0 +1,334 @@
+ProjectPortfolio As screen:
+    OnVisible: |+
+        =Set(proyectoSeleccionado,First(GalleryProyectos.AllItems))
+        
+        
+
+    Container1 As groupContainer.verticalAutoLayoutContainer:
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =97
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =1366
+        ZIndex: =1
+
+    "GalleryEstadoProyecto As gallery.'BrowseLayout_Horizontal_TwoTextOneImageOverlayVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =178
+        Items: =Sort(Filter(tfm_project_state, tfm_project.tfm_project=proyectoSeleccionado.tfm_project), Text(phase) ,Ascending)
+        OnSelect: |-
+            =// Comprobamos la fase seleccionada,  //
+            //If(ThisItem.phase=[@tfm_phase].'1.Start';
+            //Navigate(ProjectPhase;None;{proyectoSel:proyectoSeleccionado;faseSel:ThisItem})
+            //;None)
+            
+            UpdateContext({faseSel:ThisItem})
+        TemplateFill: =If(ThisItem.IsSelected, RGBA(186, 202, 226, 1), RGBA(0, 0, 0, 0))
+        TemplatePadding: =0
+        TemplateSize: =174
+        Width: =880
+        X: =464
+        Y: =159
+        ZIndex: =1
+
+        Image2 As image:
+            Height: =82
+            OnSelect: =Select(Parent)
+            Width: =95
+            X: =16
+            Y: =67
+            ZIndex: =1
+
+        Overlay1 As rectangle:
+            Height: =97
+            OnSelect: =Select(Parent)
+            Width: =151
+            X: =Image2.X
+            Y: =67
+            ZIndex: =2
+
+        Title3 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.phase
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Overlay1.Width - 32
+            X: =Overlay1.X + 16
+            Y: =87
+            ZIndex: =3
+
+        Subtitle3 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.state
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title3.Width
+            X: =Title3.X
+            Y: =Title3.Y + Title3.Height + 8
+            ZIndex: =4
+
+    "GalleryProyectos As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver4.0'":
+        BorderColor: =RGBA(153, 207, 236, 1)
+        BorderThickness: =1
+        Default: =proyectoSeleccionado
+        DelayItemLoading: =true
+        Height: =509
+        Items: =Sort(tfm_project, Text('Name/title') ,Ascending)
+        Layout: =Layout.Vertical
+        OnSelect: =Set(proyectoSeleccionado,ThisItem);
+        TemplateFill: =If(ThisItem.IsSelected, RGBA(186, 202, 226, 1), RGBA(0, 0, 0, 0))
+        TemplatePadding: =0
+        TemplateSize: =89
+        Width: =352
+        X: =46
+        Y: =228
+        ZIndex: =1
+
+        Title1 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =18
+            Text: =ThisItem.'Name/title'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =16
+            ZIndex: =1
+
+        Subtitle1 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =First(Filter(tfm_process, tfm_project.tfm_project=ThisItem.tfm_project)).tfm_process_type.methodology
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =50
+            ZIndex: =2
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =60
+            Icon: =Icon.ChevronRight
+            OnSelect: |-
+                =Select(Parent);Set(proyectoSeleccionado,ThisItem);Navigate(ProjectEdit,None,{proyectoSel:ThisItem})
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Ver los detalles del elemento"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        Separator1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =4
+
+    Label1 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =59
+        Size: =23
+        Text: ="Portafolio de proyectos"
+        Width: =452
+        X: =46
+        Y: =19
+        ZIndex: =2
+
+    IconRefresh1 As icon.Reload:
+        AccessibleLabel: =Self.Tooltip
+        Height: =88
+        Icon: =Icon.Reload
+        OnSelect: =Refresh([@tfm_project]); 
+        PaddingBottom: =22
+        PaddingLeft: =22
+        PaddingRight: =22
+        PaddingTop: =22
+        TabIndex: =0
+        Tooltip: ="Actualizar lista"
+        Width: =88
+        X: =1251
+        Y: =9
+        ZIndex: =6
+
+    IconNewItem1 As icon.Add:
+        AccessibleLabel: =Self.Tooltip
+        DisplayMode: =If(DataSourceInfo([@tfm_project], DataSourceInfo.CreatePermission), DisplayMode.Edit, DisplayMode.Disabled)
+        Height: =88
+        Icon: =Icon.Add
+        OnSelect: =NewForm(FormProject);Navigate(ProjectEdit, None);
+        PaddingBottom: =24
+        PaddingLeft: =24
+        PaddingRight: =24
+        PaddingTop: =24
+        TabIndex: =0
+        Tooltip: ="Crear elemento"
+        Width: =88
+        X: =1163
+        Y: =4
+        ZIndex: =8
+
+    Button1 As button:
+        Height: =48
+        OnSelect: |-
+            =Launch("https://orgb4b7da51.crm4.dynamics.com/main.aspx?appid=c7c4aa3d-2852-ed11-bba2-000d3adf742e")
+        Text: ="Configuracion de modelos de gestión"
+        Width: =452
+        X: =648
+        Y: =24
+        ZIndex: =9
+
+    Label1_8 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =59
+        Size: =20
+        Text: ="Proyectos"
+        Width: =349
+        X: =49
+        Y: =169
+        ZIndex: =10
+
+    Label1_9 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =59
+        Size: =15
+        Text: ="Estado del proyecto"
+        Width: =885
+        X: =464
+        Y: =159
+        ZIndex: =11
+
+    Label18 As label:
+        Text: =proyectoSeleccionado.'Name/title'
+        X: =459
+        Y: =119
+        ZIndex: =12
+
+    "Gallery3_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderThickness: =1
+        Height: =303
+        Items: |
+            =//Filtramos los procesos por proyecto y fase //
+            Sort(Filter(tfm_process, tfm_project.tfm_project=proyectoSeleccionado.tfm_project && tfm_process_type.phase=faseSel.phase ),Text(Name) ,Ascending)
+        Layout: =Layout.Vertical
+        TemplateFill: =If(ThisItem.IsSelected, RGBA(186, 202, 226, 1), RGBA(0, 0, 0, 0))
+        TemplatePadding: =0
+        TemplateSize: =68
+        Width: =880
+        X: =464
+        Y: =408
+        ZIndex: =13
+
+        Image1_1 As image:
+            Height: =37
+            OnSelect: =Select(Parent)
+            Width: =64
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title2_1 As label:
+            Height: =34
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.Name
+            VerticalAlign: =VerticalAlign.Top
+            Width: =740
+            X: =87
+            Y: =14
+            ZIndex: =2
+
+        Subtitle2_1 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =11
+            Text: =Concatenate(ThisItem.tfm_process_type.phase, " - ",ThisItem.tfm_process_type.area)
+            VerticalAlign: =VerticalAlign.Top
+            Width: =740
+            X: =100
+            Y: =40
+            ZIndex: =3
+
+        Separator2_1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Icon3 As icon.Edit:
+            Height: =44
+            Icon: =Icon.Edit
+            OnSelect: =Select(Parent)
+            Width: =0
+            X: =764
+            Y: =4
+            ZIndex: =6
+
+        Icon5 As icon.Edit:
+            Height: =50
+            Icon: =Icon.Edit
+            OnSelect: |-
+                =// Si el proceso es inicio-integracion navegamos a startIntegration //
+                If(ThisItem.tfm_process_type.phase=[@tfm_phase].'1.Start' && ThisItem.tfm_process_type.area=[@tfm_area].'04.Integration',
+                
+                
+                    Navigate(EditStartIntegration,None,{procesoSel:ThisItem, proyectoSel:proyectoSeleccionado, faseSel:faseSel, integracionStart:LookUp(tfm_start_integration,tfm_project.tfm_project=proyectoSeleccionado.tfm_project)})
+                
+                ,None);
+                
+                // Si el proceso es inicio-interesados navegamos a startStakeholders //
+                If(ThisItem.tfm_process_type.phase=[@tfm_phase].'1.Start' && ThisItem.tfm_process_type.area=[@tfm_area].'13.Stakeholders',
+                
+                    Navigate(ProjectStartStakeholders,None,{procesoSel:ThisItem, proyectoSel:proyectoSeleccionado, faseSel:faseSel})
+                
+                ,None)
+            Width: =39
+            X: =814
+            Y: =9
+            ZIndex: =7
+
+    Label1_21 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =46
+        Size: =15
+        Text: ="Procesos de la fase seleccionada"
+        Width: =885
+        X: =464
+        Y: =362
+        ZIndex: =14
+

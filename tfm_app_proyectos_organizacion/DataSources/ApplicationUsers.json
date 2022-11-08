@@ -1,0 +1,187 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "applicationusers",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "applicationuser",
+    "MaxGetRowsCount": 500,
+    "Name": "ApplicationUsers",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "applicationid": "applicationId",
+      "applicationname": "Application name",
+      "applicationtype": "ApplicationType",
+      "applicationuser_AsyncOperations": "Trabajos del sistema",
+      "applicationuser_BulkDeleteFailures": "Errores de eliminación en masa",
+      "applicationuser_DuplicateBaseRecord": "Registros duplicados (applicationuser_DuplicateBaseRecord)",
+      "applicationuser_DuplicateMatchingRecord": "Registros duplicados (applicationuser_DuplicateMatchingRecord)",
+      "applicationuser_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "applicationuser_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "applicationuser_ProcessSession": "Sesiones de proceso",
+      "applicationuser_SyncErrors": "Errores de sincronización",
+      "applicationuserid": "Application User",
+      "applicationuserprofile": "Perfiles de seguridad de campo",
+      "applicationuserrole": "Roles de seguridad",
+      "businessunitid": "Id. de unidad de negocio",
+      "canimpersonateassystemuser": "Can Impersonate As SystemUser",
+      "componentidunique": "Identificador de fila único",
+      "componentstate": "Estado del componente",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "ismanaged": "Está administrado",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "overwritetime": "Hora de sobrescritura del registro",
+      "solutionid": "Solución",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "ApplicationUsers",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "ApplicationUsers (Vistas)",
+    "Name": "_applicationuser_views",
+    "RelatedEntityName": "ApplicationUsers",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "26bf9b4f-22b9-462d-98b2-54ac7f31fdba": "ApplicationUsers activo",
+      "43273129-8f33-4567-bec2-3c24a7ca5548": "Vista de búsqueda de ApplicationUser",
+      "9131bd66-b2ab-40d1-9375-a037cf7a6a11": "Vista de búsqueda avanzada de ApplicationUser",
+      "b9518e68-dae3-40fd-adaf-03e79246d160": "Vista asociada de ApplicationUser",
+      "fac3b3c8-29cc-48ea-ad24-103370a2d90e": "ApplicationUsers inactivo"
+    }
+  },
+  {
+    "DisplayName": "ApplicationType (ApplicationUsers)",
+    "Name": "applicationuser_applicationtype",
+    "OptionSetInfoNameMapping": {
+      "0": "First party applications",
+      "1": "Platform applications",
+      "2": "External applications"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "applicationtype",
+        "OptionSetReferenceEntityName": "ApplicationUsers"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "applicationtype",
+    "RelatedEntityName": "ApplicationUsers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Can Impersonate As SystemUser (ApplicationUsers)",
+    "Name": "applicationuser_canimpersonateassystemuser",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "canimpersonateassystemuser",
+        "OptionSetReferenceEntityName": "ApplicationUsers"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "canimpersonateassystemuser",
+    "RelatedEntityName": "ApplicationUsers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Estado (ApplicationUsers)",
+    "Name": "applicationuser_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "ApplicationUsers"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "ApplicationUsers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (ApplicationUsers)",
+    "Name": "applicationuser_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "ApplicationUsers"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "ApplicationUsers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Estado del componente",
+    "Name": "componentstate",
+    "OptionSetInfoNameMapping": {
+      "0": "Publicado",
+      "1": "Sin publicar",
+      "2": "Eliminado",
+      "3": "Eliminados sin publicar"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "componentstate",
+        "OptionSetReferenceEntityName": "ApplicationUsers"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "componentstate",
+    "RelatedEntityName": "ApplicationUsers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Es un componente administrado",
+    "Name": "ismanaged",
+    "OptionSetInfoNameMapping": {
+      "0": "No administrado",
+      "1": "Administrado"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "ismanaged",
+        "OptionSetReferenceEntityName": "ApplicationUsers"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "ismanaged",
+    "RelatedEntityName": "ApplicationUsers",
+    "Type": "OptionSetInfo"
+  }
+]

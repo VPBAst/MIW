@@ -1,0 +1,99 @@
+[
+  {
+    "DisplayName": "tfm_document_relation (Vistas)",
+    "Name": "_cr31b_tfm_document_relation_views",
+    "RelatedEntityName": "tfm_document_relation",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "9ea8de0b-fba1-4a59-8e4f-cc3733a433d7": "Vista de búsqueda de tfm_document_relation",
+      "a5a61649-c94e-4c0f-85af-6fa7419faaa4": "tfm_document_relation activo",
+      "ca12c6cf-ec00-4e57-be6f-7dc5384c9357": "Vista asociada de tfm_document_relation",
+      "f0fa056b-9956-41b0-bc7e-4883dcf81201": "Vista de búsqueda avanzada de tfm_document_relation"
+    }
+  },
+  {
+    "DisplayName": "Estado (tfm_document_relation)",
+    "Name": "cr31b_tfm_document_relation_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_document_relation"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_document_relation",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_document_relation)",
+    "Name": "cr31b_tfm_document_relation_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_document_relation"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_document_relation",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_document_relations",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_document_relation",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_document_relation",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_input": "input",
+      "cr31b_methodology": "methodology",
+      "cr31b_name": "Name",
+      "cr31b_output": "output",
+      "cr31b_tfm_document_relation_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_document_relation_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_document_relation_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_document_relation_DuplicateBaseRecord)",
+      "cr31b_tfm_document_relation_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_document_relation_DuplicateMatchingRecord)",
+      "cr31b_tfm_document_relation_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_document_relation_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_document_relation_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_document_relation_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_document_relationid": "tfm_document_relation",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_document_relation",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

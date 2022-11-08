@@ -1,0 +1,53 @@
+ProjectStartStakeholders As screen:
+
+    Container1_5 As groupContainer.verticalAutoLayoutContainer:
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =97
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =1366
+        ZIndex: =1
+
+    Label1_6 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =59
+        Size: =23
+        Text: =procesoSel.Name
+        Width: =827
+        Y: =19
+        ZIndex: =2
+
+    Label1_7 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =48
+        Size: =23
+        Text: =Concatenate("[ ",procesoSel.tfm_process_type.phase, "-" , procesoSel.tfm_process_type.area," ]")
+        Width: =420
+        X: =884
+        Y: =19
+        ZIndex: =3
+
+    Label5_2 As label:
+        Height: =62
+        Text: ="Enlace al documento generado"
+        Width: =521
+        X: =845
+        Y: =692
+        ZIndex: =5
+
+    Label5_3 As label:
+        Height: =62
+        Text: ="Formulario que pide los datos de stakeholders de inicio"
+        Width: =521
+        X: =64
+        Y: =136
+        ZIndex: =6
+
+    Icon1_3 As icon.BackArrow:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back()
+        X: =1284
+        Y: =16
+        ZIndex: =7
+

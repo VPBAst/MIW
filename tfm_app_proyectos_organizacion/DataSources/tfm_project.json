@@ -1,0 +1,104 @@
+[
+  {
+    "DisplayName": "tfm_project (Vistas)",
+    "Name": "_cr31b_tfm_project_views",
+    "RelatedEntityName": "tfm_project",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "43e3f21c-9c3b-405f-8eea-a3537f8e3376": "Vista de búsqueda avanzada de tfm_project",
+      "47578d89-597f-4245-b1cd-90c083b8daee": "Vista de búsqueda de tfm_project",
+      "4efeaefc-39f7-48c2-9a69-1098223ac2d3": "tfm_project inactivo",
+      "6c2508af-1cba-476e-b1fd-7ef571c05f1e": "tfm_project activo",
+      "86a4a5e5-ed58-42bf-9435-b77b0ac604b1": "Vista asociada de tfm_project"
+    }
+  },
+  {
+    "DisplayName": "Estado (tfm_project)",
+    "Name": "cr31b_tfm_project_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_project"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_project",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_project)",
+    "Name": "cr31b_tfm_project_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_project"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_project",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_projects",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_project",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_project",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_name": "Name/title",
+      "cr31b_tfm_document_cr31b_tfm_project_cr31": "tfm_document",
+      "cr31b_tfm_project_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_project_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_project_cr31b_tfm_project_cr31b": "tfm_process",
+      "cr31b_tfm_project_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_project_DuplicateBaseRecord)",
+      "cr31b_tfm_project_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_project_DuplicateMatchingRecord)",
+      "cr31b_tfm_project_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_project_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_project_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_project_state_cr31b_tfm_project": "tfm_project_state",
+      "cr31b_tfm_project_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_projectid": "tfm_project",
+      "cr31b_tfm_stakeholder_cr31b_tfm_project_c": "tfm_stakeholder",
+      "cr31b_tfm_start_integration_cr31b_tfm_pro": "tfm_start_integration",
+      "cr31b_urlorganizationsite": "urlOrganizationSite",
+      "cr31b_urlprojectsite": "urlProjectSite",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_project",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

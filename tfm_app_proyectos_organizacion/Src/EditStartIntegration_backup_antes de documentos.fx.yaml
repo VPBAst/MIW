@@ -1,0 +1,189 @@
+"'EditStartIntegration_backup_antes de documentos' As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+    OnVisible: |
+        =//Set(integracionStart; LookUp(tfm_start_integration;tfm_project.tfm_project=proyectoSel.tfm_project));;
+        //UpdateContext({integracionStart:LookUp(tfm_start_integration;tfm_project.tfm_project=proyectoSel.tfm_project)}
+
+    RectQuickActionBar2_1 As rectangle:
+        Height: =88
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName2_1 As label:
+        Align: =Align.Center
+        Fill: =RGBA(0, 18, 107, 1)
+        Height: =88
+        Text: =
+        Width: =Parent.Width
+        ZIndex: =2
+
+    Canvas2_1 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =RectQuickActionBar2_1.Y + RectQuickActionBar2_1.Height
+        ZIndex: =3
+
+        seccionDatos_1 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =462
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Label7_2 As label:
+                BorderThickness: =1
+                Height: =108
+                Text: =datosPantallaJSON
+                Width: =309
+                X: =642
+                Y: =285
+                ZIndex: =1
+
+            Label7_3 As label:
+                Height: =31
+                Text: |-
+                    =Concatenate("proyectoSel: ",proyectoSel.'Name/title')
+                Width: =277
+                X: =81
+                Y: =340
+                ZIndex: =2
+
+            datePickerFechaActa_1 As datepicker:
+                DefaultDate: =If(IsBlank(integracionStart.datePreparedProjectCharter),Today(), integracionStart.datePreparedProjectCharter)
+                X: =81
+                Y: =135
+                ZIndex: =4
+
+            txtProposito_1 As richTextEditor:
+                Default: =If(IsBlank(integracionStart.purposeProject),"", integracionStart.purposeProject)
+                X: =472
+                Y: =96
+                ZIndex: =5
+
+            Label9_3 As label:
+                Text: ="Fecha de acta"
+                X: =81
+                Y: =95
+                ZIndex: =6
+
+            Label9_2 As label:
+                Text: ="Proposito del proyecto"
+                Width: =242
+                X: =472
+                Y: =56
+                ZIndex: =7
+
+            Button3_7 As button:
+                Height: =74
+                OnSelect: |-
+                    =
+                    Patch(tfm_start_integration, If(IsBlank(integracionStart),Defaults(tfm_start_integration),First( Filter( tfm_start_integration, tfm_start_integration = integracionStart.tfm_start_integration ) )),{
+                        descriptionHighLevelProject:"descripcion de alto nivel del proyecto",
+                        purposeProject:txtPropositoArea.HtmlText,
+                        tfm_project:proyectoSel,
+                        datePreparedProjectCharter:datePickerFechaActa.SelectedDate
+                    });
+                    
+                    UpdateContext({integracionStart:LookUp(tfm_start_integration,tfm_project.tfm_project=proyectoSel.tfm_project)})
+                Text: ="Guardar en la tabla"
+                Width: =281
+                X: =1004
+                Y: =319
+                ZIndex: =8
+
+            Button3_5 As button:
+                Height: =92
+                OnSelect: |-
+                    =ClearCollect(datosPantalla,{
+                        fechaActa:datePickerFechaActa_1.SelectedDate,
+                        propositoProyecto:Text(txtPropositoArea)
+                    });
+                    
+                    Set(datosPantallaJSON, JSON(datosPantalla,JSONFormat.IgnoreUnsupportedTypes))
+                Text: ="Guardar coleccion"
+                Width: =152
+                X: =472
+                Y: =301
+                ZIndex: =9
+
+            Label5_8 As label:
+                Height: =56
+                Text: ="Debe recibir una variable de contexto integrationStart"
+                Width: =354
+                X: =42
+                Y: =23
+                ZIndex: =10
+
+        seccionDocumentacion_1 As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =358
+            Width: =1366
+            X: =0
+            Y: =1
+            ZIndex: =2
+
+            Label5_1 As label:
+                Text: ="Otra seccion??"
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+            Button4_1 As button:
+                Height: =56
+                Text: ="Generar Documento"
+                Width: =194
+                X: =792
+                Y: =80
+                ZIndex: =2
+
+    Label1_18 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =59
+        Size: =20
+        Text: =procesoSel.Name
+        Width: =827
+        X: =22
+        Y: =14
+        ZIndex: =4
+
+    Icon1_9 As icon.BackArrow:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Back()
+        X: =1284
+        Y: =16
+        ZIndex: =5
+
+    Label1_19 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =55
+        Size: =15
+        Text: =Concatenate("[ ",procesoSel.tfm_process_type.phase, "-" , procesoSel.tfm_process_type.area," ]")
+        Width: =394
+        X: =798
+        Y: =16
+        ZIndex: =6
+
+    Icon2_2 As icon.Save:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Save
+        OnSelect: |-
+            =
+            
+            //SubmitForm(FormIntegracion);;
+            
+            // Vamos a intentar guardarlo con patch... porque tenemos que pasar el id //
+        Width: =66
+        X: =1204
+        Y: =19
+        ZIndex: =8
+

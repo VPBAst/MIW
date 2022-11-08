@@ -1,0 +1,121 @@
+[
+  {
+    "DisplayName": "tfm_stakeholder (Vistas)",
+    "Name": "_cr31b_tfm_stakeholder_views",
+    "RelatedEntityName": "tfm_stakeholder",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0febb0a9-1b54-4045-9bda-571186120969": "Vista de búsqueda de tfm_stakeholder",
+      "85ccd3dc-34ac-45ad-a43c-64c4a7ea36f2": "tfm_stakeholder activo",
+      "963b0f51-8e04-437a-9511-07f54926534a": "Vista asociada de tfm_stakeholder",
+      "f489f10c-1daf-45b4-a806-185b5b51ddfb": "Vista de búsqueda avanzada de tfm_stakeholder",
+      "f509862b-2ff7-459a-b488-8ab620bd084e": "tfm_stakeholder inactivo"
+    }
+  },
+  {
+    "DisplayName": "tfm_role",
+    "Name": "cr31b_tfm_role",
+    "OptionSetInfoNameMapping": {
+      "0": "Manager",
+      "1": "Stakeholder",
+      "2": "Customer"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cr31b_role",
+        "OptionSetReferenceEntityName": "tfm_stakeholder"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cr31b_role",
+    "RelatedEntityName": "tfm_stakeholder",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Estado (tfm_stakeholder)",
+    "Name": "cr31b_tfm_stakeholder_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_stakeholder"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_stakeholder",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_stakeholder)",
+    "Name": "cr31b_tfm_stakeholder_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_stakeholder"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_stakeholder",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_stakeholders",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_stakeholder",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_stakeholder",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_name": "Name",
+      "cr31b_role": "role",
+      "cr31b_tfm_project": "tfm_project",
+      "cr31b_tfm_stakeholder_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_stakeholder_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_stakeholder_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_stakeholder_DuplicateBaseRecord)",
+      "cr31b_tfm_stakeholder_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_stakeholder_DuplicateMatchingRecord)",
+      "cr31b_tfm_stakeholder_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_stakeholder_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_stakeholder_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_stakeholder_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_stakeholderid": "tfm_stakeholder",
+      "cr31b_usuario": "usuario",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_stakeholder",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]

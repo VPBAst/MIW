@@ -1,0 +1,99 @@
+[
+  {
+    "DisplayName": "tfm_process (Vistas)",
+    "Name": "_cr31b_tfm_process_views",
+    "RelatedEntityName": "tfm_process",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "037c7bc8-d8d6-4d98-a4e4-35d82521460b": "Vista de búsqueda de tfm_process",
+      "043313ac-c8ba-4999-aa01-9fe08c5aa299": "tfm_process activo",
+      "cc76cc05-91fc-4b5e-b4cd-15a8ad3e249e": "Vista de búsqueda avanzada de tfm_process",
+      "efc3b906-5063-408d-87a7-dca8877190bc": "Vista asociada de tfm_process"
+    }
+  },
+  {
+    "DisplayName": "Estado (tfm_process)",
+    "Name": "cr31b_tfm_process_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Activo",
+      "1": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "tfm_process"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "tfm_process",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Razón para el estado (tfm_process)",
+    "Name": "cr31b_tfm_process_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Activo",
+      "2": "Inactivo"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "tfm_process"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "tfm_process",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr31b_tfm_processes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr31b_tfm_process",
+    "MaxGetRowsCount": 500,
+    "Name": "tfm_process",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Propietario",
+      "cr31b_name": "Name",
+      "cr31b_tfm_document_cr31b_tfm_process_cr31": "tfm_document",
+      "cr31b_tfm_process_AsyncOperations": "Trabajos del sistema",
+      "cr31b_tfm_process_BulkDeleteFailures": "Errores de eliminación en masa",
+      "cr31b_tfm_process_DuplicateBaseRecord": "Registros duplicados (cr31b_tfm_process_DuplicateBaseRecord)",
+      "cr31b_tfm_process_DuplicateMatchingRecord": "Registros duplicados (cr31b_tfm_process_DuplicateMatchingRecord)",
+      "cr31b_tfm_process_MailboxTrackingFolders": "Carpetas de seguimiento automático del buzón",
+      "cr31b_tfm_process_PrincipalObjectAttributeAccesses": "Uso compartido de campos",
+      "cr31b_tfm_process_ProcessSession": "Sesiones de proceso",
+      "cr31b_tfm_process_SyncErrors": "Errores de sincronización",
+      "cr31b_tfm_process_type": "tfm_process_type",
+      "cr31b_tfm_processid": "tfm_process",
+      "cr31b_tfm_project": "tfm_project",
+      "createdby": "Autor",
+      "createdon": "Fecha de creación",
+      "createdonbehalfby": "Autor (delegado)",
+      "importsequencenumber": "Número de secuencia de importación",
+      "modifiedby": "Modificado por",
+      "modifiedon": "Fecha de modificación",
+      "modifiedonbehalfby": "Modificado por (delegado)",
+      "overriddencreatedon": "Fecha de creación del registro",
+      "owningbusinessunit": "Unidad de negocio propietaria",
+      "owningteam": "Equipo propietario",
+      "owninguser": "Usuario propietario",
+      "statecode": "Estado",
+      "statuscode": "Razón para el estado",
+      "timezoneruleversionnumber": "Número de versión de regla de zona horaria",
+      "utcconversiontimezonecode": "Código de zona horaria de conversión UTC",
+      "versionnumber": "Número de versión"
+    },
+    "PreferredName": "tfm_process",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]
