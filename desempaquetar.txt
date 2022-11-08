@@ -1,0 +1,3 @@
+cd C:\Users\vitit\Git\MIW\PowerApps-Language-Tooling\bin\Debug\PASopa
+
+pasopa -unpack  C:\Users\vitit\Git\MIW\tfm_app_proyectos_organizacion.msapp C:\Users\vitit\Git\MIW\tfm_app_proyectos_organizacion
